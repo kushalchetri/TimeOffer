@@ -9,8 +9,6 @@ const page = async () => {
         return <div>Loading...</div>
     }
     
-    
-
 
   return (
     <div className="container max-w-md mx-auto py-10">

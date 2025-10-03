@@ -40,10 +40,10 @@ const page = async () => {
 
   const totalRequests = data.length;
   const approvedRequests = data.filter(
-    (request) => request.status === "APPROVED"
+    (request:any) => request.status === "APPROVED"
   ).length;
   const pendingRequests = data.filter(
-    (request) => request.status === "PENDING"
+    (request:any) => request.status === "PENDING"
   ).length;
 
   return (

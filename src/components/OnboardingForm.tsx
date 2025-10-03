@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUser } from "@clerk/nextjs";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,12 +25,10 @@ import {
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
-import { useRouter } from "next/navigation";
 import { RadioGroup } from "@radix-ui/react-radio-group";
 import { RadioGroupItem } from "./ui/radio-group";
 import { cn } from "@/lib/utils";
 import { createAdmin, createEmployee } from "@/lib/actions/onboarding";
-import { set } from "date-fns";
 import { toast } from "sonner";
 
 const employeeSchema = z.object({
@@ -71,8 +68,7 @@ const OnboardingForm = ({
   firstName,
   lastName,
 }: OnboardingFormProps) => {
-  const router = useRouter();
-  const { user, isLoaded } = useUser();
+  const { user, isLoaded} = useUser();
   const [accountType, setAccountType] = useState<"admin" | "employee">(
     "employee"
   );
@@ -131,15 +127,16 @@ const OnboardingForm = ({
         error instanceof Error ? error.message : "Failed to complete onboarding"
       );
     } finally {
-      setIsSubmitting(false);
+      setTimeout(()=>{
+        setIsSubmitting(false);
+      },3500)
+  
     }
 
     if (canRedirect) {
       console.log("Redirecting to employee");
       toast.success("Onboarding completed successfully.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      window.location.reload();   
     }
   };
 
@@ -173,15 +170,15 @@ const OnboardingForm = ({
           : "Failed to complete onboarding. Please try again. "
       );
     } finally {
-      setIsSubmitting(false);
+      setTimeout(()=>{
+        setIsSubmitting(false);
+      },3500)
       }
 
     if (canRedirect) {
       console.log("Redirecting to admin");
       toast.success("Onboarding completed successfully.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
+      window.location.reload();
     }
   };
 
@@ -235,8 +232,12 @@ const OnboardingForm = ({
                   className="peer sr-only"
                 />
                 <Label
-                  htmlFor="admin"
-                  className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground"
+                htmlFor="admin"
+                  className={cn(
+                    "flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground",
+                    accountType === "admin" &&
+                      "bg-accent text-accent-foreground"
+                  )}
                 >
                   <span>Business Admin</span>
                 </Label>

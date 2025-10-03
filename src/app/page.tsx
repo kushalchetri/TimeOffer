@@ -2,11 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Paperclip } from "lucide-react";
-import { SignInButton } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
-import { SignedIn } from "@clerk/nextjs";
-import { SignedOut } from "@clerk/nextjs";
+import { Paperclip, BellRing, ClipboardCheck } from "lucide-react";
+import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -21,11 +18,11 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <span className="text-2xl font-bold">TimeOffer</span>
+      <header className="sm:block flex flex-col justify-between sm:h-30 sm:w-16 md:flex lg:flex-row lg:h-20 lg:w-270 lg:px-6 items-center justify-between">
+        <Link href="/" className="mt-2 block sm:flex items-center justify-center md:mt-0 lg:flex items-center justify-center">
+          <span className="lg:text-2xl font-bold">TimeOffer</span>
         </Link>
-      <nav className="flex gap-4 sm:gap-6">
+      <nav className="flex mt-3 md:mt-0 lg:gap-20 gap-2">
           <Link
             href="/features"
             className="text-sm font-medium hover:underline underline-offset-4"
@@ -45,7 +42,7 @@ export default async function Home() {
             Pricing
           </Link>
         </nav>
-        <div className="flex gap-4">
+        <div className="flex mt-3 mb-2 md:mt-0 mb-0 gap-4">
         <SignedOut>
           <SignInButton 
           />
@@ -56,7 +53,7 @@ export default async function Home() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+        <section className="w-full md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
@@ -116,9 +113,9 @@ export default async function Home() {
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
               <Card>
                 <CardContent className="pt-6">
-                  <div className="flex flex-col justify-center space-y-4">
+                  <div className="flex flex-col justify-center space-y-4 h-[190px]">
                     <Paperclip className="w-10 h-10 text-black" />
-                    <div className="space-y-2">
+                    <div className="space-y-2 mb-5">
                       <h3 className="text-xl font-bold">
                         Easy Request Submission
                       </h3>
@@ -133,14 +130,13 @@ export default async function Home() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex flex-col justify-center space-y-4">
-                    <Paperclip className="w-10 h-10 text-black" />
+                    <BellRing className="w-10 h-10" />
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold">
-                        Easy Request Submission
+                        Streamlined Approvals
                       </h3>
                       <p className="text-gray-500 dark:text-gray-400">
-                        Employees can submit time off requests directly through
-                        the platform.
+                        Managers receive instant notifications and can approve or deny requests with a single click, ensuring faster decision-making.
                       </p>
                     </div>
                   </div>
@@ -149,14 +145,13 @@ export default async function Home() {
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex flex-col justify-center space-y-4">
-                    <Paperclip className="w-10 h-10 text-black" />
+                    <ClipboardCheck className="h-10 w-10" />
                     <div className="space-y-2">
                       <h3 className="text-xl font-bold">
-                        Easy Request Submission
+                        Comprehensive Tracking
                       </h3>
                       <p className="text-gray-500 dark:text-gray-400">
-                        Employees can submit time off requests directly through
-                        the platform.
+                       Employees and managers can view a clear history of requests, balances, and usage, helping teams stay organized and transparent.
                       </p>
                     </div>
                   </div>
