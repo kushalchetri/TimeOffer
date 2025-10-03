@@ -10,14 +10,14 @@ interface PageParams {
   id: string;
 }
 
-const page = async ({params}: {params: PageParams}) => {
+const page = async ({params}) => {
   const { userId } = await auth();
 
   if (!userId) {
     redirect("/");
   }
 
-  const { id } =  params
+  const { id } =  params;
 
   const request = await prisma.timeOffRequest.findUnique({
     where: {
