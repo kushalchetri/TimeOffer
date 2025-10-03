@@ -44,7 +44,6 @@ import {
   TrashIcon,
   PlusIcon,
   ArrowLeftIcon,
-  Plus,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";

@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { TimeOffRequest } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -40,10 +41,10 @@ const page = async () => {
 
   const totalRequests = data.length;
   const approvedRequests = data.filter(
-    (request:any) => request.status === "APPROVED"
+    (request:TimeOffRequest) => request.status === "APPROVED"
   ).length;
   const pendingRequests = data.filter(
-    (request:any) => request.status === "PENDING"
+    (request:TimeOffRequest) => request.status === "PENDING"
   ).length;
 
   return (
