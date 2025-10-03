@@ -6,10 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import ApproveRejectButtons from "@/components/ApproveRejectButtons";
 
-interface PageParams {
-  id: string;
-}
-
 const page = async ({params}) => {
   const { userId } = await auth();
 
