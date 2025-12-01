@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import AuthButtons from "@/components/AuthButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Paperclip, BellRing, ClipboardCheck } from "lucide-react";
-import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -43,13 +43,7 @@ export default async function Home() {
           </Link>
         </nav>
         <div className="flex mt-3 mb-2 md:mt-0 mb-0 gap-4">
-        <SignedOut>
-          <SignInButton 
-          />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+        <AuthButtons/>
         </div>
       </header>
       <main className="flex-1">

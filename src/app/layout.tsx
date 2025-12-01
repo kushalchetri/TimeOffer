@@ -30,14 +30,14 @@ export default function RootLayout({
   return (
     
       <html lang="en">
-        <ClerkProvider>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <ClerkProvider>
           <MaxWidthWrapper>
             {children}
           </MaxWidthWrapper>
           <Toaster />
+          </ClerkProvider>
         </body>
-        </ClerkProvider>
       </html>
   )
 }

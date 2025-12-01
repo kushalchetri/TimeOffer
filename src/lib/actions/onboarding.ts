@@ -21,7 +21,7 @@ export async function createEmployee(
     });
 
     if (!code) {
-      throw new Error("Invalid invitation code");
+      throw new Error("Invalid invitation code")
     }
 
     await (
@@ -61,7 +61,7 @@ export async function createEmployee(
       success: true,
     };
   } catch (error) {
-    console.error(error);
+    console.error(`this is error ${error}`);
     return {
       success: false,
     };
